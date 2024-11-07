@@ -4,7 +4,7 @@
  * 
  * @author Susan King 
  * @author Alexandra Michael modified for Checkstyle
- * @author Divya Bhupathi updates
+ * @author Divya Bhupathi
  * 
  * @version July 6, 2018
  */
