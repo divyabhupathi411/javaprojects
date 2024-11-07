@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 /**
  * Provides an inventory for IceCreamParlor using ArrayList of  IceCream
+ * IceCreamParlorAL class has differnt methods for differnt flavors of Ice 
+ * Creams stored in a ArrayList
  * 
  * @author Susan King 
  * @author Martin Baynes
  * @author Alexandra Michael modified for Checkstyle
- * @author Divya Bhupathi updates
- * @version July 6, 2018
+ * @author Divya Bhupathi
+ * 
+ * @version October 20, 2024
  */
 public class IceCreamParlorAL
 {
@@ -23,30 +26,30 @@ public class IceCreamParlorAL
         inventory = new ArrayList<IceCream>();
         inventory.add(new IceCream());
         inventory.add(new IceCream ("Skinny Butter Pecan", 
-                new String[] {"milk","cream","sugar","pecans","butter" }, 
+                new String[] {"milk", "cream", "sugar", "pecans", "butter" }, 
                 120));
         inventory.add(new IceCream("Chocolate Double Fudge", 
-                new String[] {"chocolate","milk", "vanilla extract", 
+                new String[] {"chocolate", "milk", "vanilla extract", 
                     "condensed milk", "salt", "heavy cream"},
                 180));
         inventory.add(new IceCream("Strawberry Cheesecake", 
-                new String[]{"milk","cream","sugar","cheesecake","strawberries" },
+                new String[]{"milk", "cream", "sugar", "cheesecake", "strawberries" },
                 150));
         inventory.add(new IceCream("Moose Track", 
-                new String[]{"milk","cream","sugar","peanut butter",
-                    "chocolate fudge","caramel"}, 
+                new String[]{"milk", "cream", "sugar", "peanut butter",
+                    "chocolate fudge", "caramel"}, 
                 175));
         inventory.add(new IceCream("Lite Mint Chocolate Chip", 
-                new String[] {"milk","cream","sugar","chocolate chips" ,"mint"}, 
+                new String[] {"milk", "cream", "sugar", "chocolate chips", "mint"}, 
                 120));
         inventory.add(new IceCream("Java Chip", 
-                new String[] {"milk","cream","sugar","chocolate chips" ,"coffee base"}, 
+                new String[] {"milk", "cream", "sugar", "chocolate chips", "coffee base"}, 
                 150));
         inventory.add(new IceCream("Madagascar Vanilla Bean", 
-                new String[] {"milk","cream","sugar","vanilla bean"}, 
+                new String[] {"milk", "cream", "sugar", "vanilla bean"}, 
                 160));
         inventory.add(new IceCream("Chocolate Chip Cookie Dough", 
-                new String[] {"milk","cream","sugar","chocolate chips" ,"cookie dough"}, 
+                new String[] {"milk", "cream", "sugar", "chocolate chips", "cookie dough"}, 
                 170));
     }
 
@@ -57,8 +60,7 @@ public class IceCreamParlorAL
      */
     public String getParlorName( )
     {
-        //change code here
-        return null;
+        return parlorName;
     }
 
     /**
@@ -68,7 +70,7 @@ public class IceCreamParlorAL
      */
     public void setParlorName(String nam)
     {
-        // add code here
+        parlorName = nam;
     }
 
     /**
@@ -79,8 +81,7 @@ public class IceCreamParlorAL
      */
     public ArrayList<IceCream> getInventory( )
     {
-        // change code
-        return null;
+        return inventory;
     }
 
     /**
@@ -90,7 +91,7 @@ public class IceCreamParlorAL
      */
     public void setInventory(ArrayList<IceCream> invent)
     {
-        // add code here
+        inventory = invent;
     }
 
     /**
@@ -100,8 +101,12 @@ public class IceCreamParlorAL
      */
     public double getAverageCaloriesInInventory()
     {
-        // change code here
-        return 0.0;
+        int sum = 0;
+        for(int i=0; i<inventory.size();i++)
+        {
+            sum += ((inventory.get(i)).getCalories());
+        }
+        return (double)sum/inventory.size();
     }
 
     /**
@@ -111,8 +116,15 @@ public class IceCreamParlorAL
      */
     public int getMinimumCaloriesInInventory()
     {
-        // change code here
-        return 0;
+        int min = (inventory.get(0)).getCalories();
+        for(int i=0; i<inventory.size();i++)
+        {
+            if ((inventory.get(i)).getCalories()< min)
+            {
+                min = (inventory.get(i)).getCalories();
+            }
+        }
+        return min;
     }
 
     /**
@@ -126,9 +138,13 @@ public class IceCreamParlorAL
     {
         int minCal= getMinimumCaloriesInInventory();
         int counter = 0;
-        // count how many have the lowest calories
-        // add code here
-
+        for(int i=0; i<inventory.size();i++)
+        {
+            if (minCal == (inventory.get(i)).getCalories())
+            {
+                counter++;
+            }
+        }
         return counter;
     }
 
@@ -143,10 +159,14 @@ public class IceCreamParlorAL
     public ArrayList<IceCream> locateLowCalIceCreams()
     {
         ArrayList<IceCream> lowCalVarieties = new ArrayList<IceCream>();
-        int index = 0;
         int minCal= getMinimumCaloriesInInventory();
-        // gather the low calories goodies
-        // add code here
+        for(int i=0; i<inventory.size();i++)
+        {
+            if (minCal == (inventory.get(i)).getCalories())
+            {
+                lowCalVarieties.add(inventory.get(i));
+            }
+        }
 
         return lowCalVarieties;
     }
@@ -163,14 +183,14 @@ public class IceCreamParlorAL
      */
     public ArrayList<IceCream> locateIngredientMatches(String ingredient)
     {
-        int counter = 0;
-        // count how many ice cream have a given ingredient
-        // add code here
-
         ArrayList<IceCream> match = new ArrayList<IceCream>();
-        // gather the ice creams with ingredient
-        // add code here
-
+        for(int i=0; i<inventory.size();i++)
+        {
+            if (inventory.get(i).isIngredientFound(ingredient))
+            {
+                match.add(inventory.get(i));
+            }
+        }
         return match;
     }
 
@@ -182,14 +202,14 @@ public class IceCreamParlorAL
      */
     public ArrayList<IceCream> locateNameAndWordMatches(String word)
     {
-        int counter = 0;
-        // count how many ice cream have word in name
-        // add code here
-
         ArrayList<IceCream> match = new ArrayList<IceCream>();
-        int index = 0;
-        // gather the ice creams with ingredient
-        // add code here
+        for(int i=0; i<inventory.size();i++)
+        {
+            if (inventory.get(i).isNameFound(word))
+            {
+                match.add(inventory.get(i));
+            }
+        }
         return match;
     }
 
@@ -227,8 +247,7 @@ public class IceCreamParlorAL
         IceCreamParlorAL iScream = new IceCreamParlorAL();
         iScream.printInventory();
 
-        System.out.println("\n\nAVERAGE CALORIES = " +
-            iScream.getAverageCaloriesInInventory());
+        System.out.println("\n\nAVERAGE CALORIES = " + iScream.getAverageCaloriesInInventory());
 
         System.out.println("\n\nMATCH FOR CHOCOLATE IN NAME");
         iScream.printIceCreams(iScream.locateNameAndWordMatches("chocolate"));
