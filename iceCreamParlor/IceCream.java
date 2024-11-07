@@ -5,6 +5,7 @@
  * @author Susan King
  * @author Martin Baynes
  * @author Alexandra Michael modified for Checkstyle
+ * @author Divya Bhupathi updates
  * @version July 6, 2018
  */
 public class IceCream
