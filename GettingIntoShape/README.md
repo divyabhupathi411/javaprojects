@@ -1,1 +1,2 @@
-
+Developed java interfaces and classes that represent and manipulate a different geometric shapes (such as circles, triangles, rectangles, polygons, and squares) implemented core object-oriented programming concepts, including inheritance, polymorphism, abstract classes, interfaces, and method overriding.
+This project allowed to compare, label and compute geometric properties like area and perimeter.
